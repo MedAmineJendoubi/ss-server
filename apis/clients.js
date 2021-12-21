@@ -26,6 +26,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
     let id = req.params.id;
+    console.log('LOGGED :',req.params.loggedId);
     queries
         .getClientDetailedById(id)
         .then(data=>{
