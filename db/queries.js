@@ -110,7 +110,8 @@ module.exports = {
           "b.id as bonus_id",
           "bs.id as bonus_spent_id"
         )
-        .where("d.user_id", id);
+        .where("d.user_id", id)
+        .orderBy("d.date", "desc");
       const bonus = knex("bonus as b")
         .leftJoin("devis as d", "b.devis_id", "d.id")
         .select(
@@ -123,7 +124,9 @@ module.exports = {
           "b.created_at",
           "d.ref_devis"
         )
-        .where("b.user_id", id);
+        .where("b.user_id", id)
+        .orderBy("b.created_at", "desc");
+
       const bonus_spent = knex("bonus_spent as b")
         .leftJoin("devis as d", "b.devis_id", "d.id")
         .select(
@@ -135,7 +138,8 @@ module.exports = {
           "b.created_at",
           "d.ref_devis"
         )
-        .where("b.user_id", id);
+        .where("b.user_id", id)
+        .orderBy("b.created_at", "desc");;
 
       Promise.all([users, devis, bonus, bonus_spent])
         .then((res) => {

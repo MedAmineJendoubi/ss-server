@@ -38,7 +38,7 @@ app.use(cors());
 
 //app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/api/v1/auth',authRouter);
 
 app.use(verifyToken)
@@ -66,6 +66,7 @@ app.all("*", (req, res) => {
 
     //req.pipe(request(req.url)).pipe(res);
     //request(req.url).pipe(res);
+  
 });
 
 // catch 404 and forward to error handler
@@ -145,3 +146,4 @@ function verifyAdmin(req, res, next) {
 }
 
 module.exports = app;
+
