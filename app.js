@@ -139,7 +139,7 @@ function verifyAdmin(req, res, next) {
     //   return res.status(403).redirect(301, "/");
     // }
     if(req.role != 'admin')return res.status(401).send({
-      message: "Unauthorized role",
+      message: "Unauth role",
     });
   }
   next();
